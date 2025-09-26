@@ -10,3 +10,10 @@
 ## Aufgabe 03
 [Aufgabe 03](./12.09//)
 
+## 19.09 – Testing Aufgaben
+
+### Übung 1 – Backend-API-Tests
+Pfad: `19.09/uebung1/`  
+Run:
+```bash
+newman run 19.09/uebung1/backend-tests.postman_collection.json
