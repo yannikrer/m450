@@ -1,0 +1,11 @@
+# Build artefacts
+/bin/
+/obj/
+/target/
+/out/
+/.idea/
+/.vscode/
+/*.user
+*.log
+*.cache
+*.config
