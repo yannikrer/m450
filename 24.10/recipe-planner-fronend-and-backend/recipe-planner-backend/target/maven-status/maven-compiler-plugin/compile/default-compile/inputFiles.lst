@@ -1,0 +1,12 @@
+C:\Users\luca\OneDrive\Berufsschule\TBZ\m450\24.10\recipe-planner-fronend-and-backend\recipe-planner-backend\src\main\java\ch\tbz\recipe\planner\entities\IngredientEntity.java
+C:\Users\luca\OneDrive\Berufsschule\TBZ\m450\24.10\recipe-planner-fronend-and-backend\recipe-planner-backend\src\main\java\ch\tbz\recipe\planner\entities\RecipeEntity.java
+C:\Users\luca\OneDrive\Berufsschule\TBZ\m450\24.10\recipe-planner-fronend-and-backend\recipe-planner-backend\src\main\java\ch\tbz\recipe\planner\service\RecipeService.java
+C:\Users\luca\OneDrive\Berufsschule\TBZ\m450\24.10\recipe-planner-fronend-and-backend\recipe-planner-backend\src\main\java\ch\tbz\recipe\planner\domain\Unit.java
+C:\Users\luca\OneDrive\Berufsschule\TBZ\m450\24.10\recipe-planner-fronend-and-backend\recipe-planner-backend\src\main\java\ch\tbz\recipe\planner\mapper\CommonMapperConfig.java
+C:\Users\luca\OneDrive\Berufsschule\TBZ\m450\24.10\recipe-planner-fronend-and-backend\recipe-planner-backend\src\main\java\ch\tbz\recipe\planner\mapper\RecipeEntityMapper.java
+C:\Users\luca\OneDrive\Berufsschule\TBZ\m450\24.10\recipe-planner-fronend-and-backend\recipe-planner-backend\src\main\java\ch\tbz\recipe\planner\RecipePlannerApplication.java
+C:\Users\luca\OneDrive\Berufsschule\TBZ\m450\24.10\recipe-planner-fronend-and-backend\recipe-planner-backend\src\main\java\ch\tbz\recipe\planner\domain\Recipe.java
+C:\Users\luca\OneDrive\Berufsschule\TBZ\m450\24.10\recipe-planner-fronend-and-backend\recipe-planner-backend\src\main\java\ch\tbz\recipe\planner\domain\Ingredient.java
+C:\Users\luca\OneDrive\Berufsschule\TBZ\m450\24.10\recipe-planner-fronend-and-backend\recipe-planner-backend\src\main\java\ch\tbz\recipe\planner\controller\RecipeController.java
+C:\Users\luca\OneDrive\Berufsschule\TBZ\m450\24.10\recipe-planner-fronend-and-backend\recipe-planner-backend\src\main\java\ch\tbz\recipe\planner\mapper\IngredientEntityMapper.java
+C:\Users\luca\OneDrive\Berufsschule\TBZ\m450\24.10\recipe-planner-fronend-and-backend\recipe-planner-backend\src\main\java\ch\tbz\recipe\planner\repository\RecipeRepository.java
