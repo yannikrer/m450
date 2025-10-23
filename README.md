@@ -17,3 +17,6 @@ Pfad: `19.09/uebung1/`
 Run:
 ```bash
 newman run 19.09/uebung1/backend-tests.postman_collection.json
+````
+## Aufgabe 7 (24.10)
+[Aufgabe 7](24.10/)
