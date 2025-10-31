@@ -1,12 +1,10 @@
 name: CI (Projekt)
 
 on:
-  pull_request:
-    paths:
-      - 'Projekt/**'
-      - '.github/workflows/**'
-  push:
+  workflow_dispatch:   # optional: manuell starten
+  pull_request:        # nur PRs prüfen (das willst du im Review)
     branches: ['*']
+
     paths:
       - 'Projekt/**'
       - '.github/workflows/**'
