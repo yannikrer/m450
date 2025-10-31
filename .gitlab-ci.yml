@@ -1,0 +1,50 @@
+image: gradle:8.7-jdk17
+
+cache:
+  key: "${CI_COMMIT_REF_SLUG}"
+  paths:
+    - .gradle/wrapper
+    - .gradle/caches
+    - Projekt/.gradle/wrapper
+    - Projekt/.gradle/caches
+
+stages: [build, test, pages]
+
+variables:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs='-Xmx1024m'"
+
+build:
+  stage: build
+  script:
+    - cd Projekt
+    - gradle --no-daemon clean assemble
+  artifacts:
+    paths:
+      - Projekt/build/libs/
+    expire_in: 1 week
+
+test:
+  stage: test
+  script:
+    - cd Projekt
+    - gradle --no-daemon test
+  artifacts:
+    when: always
+    reports:
+      junit: Projekt/build/test-results/test/*.xml
+    paths:
+      - Projekt/build/reports/tests/test
+    expire_in: 1 week
+
+pages:
+  stage: pages
+  dependencies: [test]
+  script:
+    - mkdir -p public/tests
+    - cp -r Projekt/build/reports/tests/test/* public/tests/ || true
+    - echo "<h2>Reports</h2><ul><li><a href='tests/index.html'>JUnit Test Report</a></li></ul>" > public/index.html
+  artifacts:
+    paths: [public]
+  only:
+    - branches
+    - merge_requests
