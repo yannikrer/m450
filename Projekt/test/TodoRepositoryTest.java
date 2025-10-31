@@ -7,10 +7,6 @@ import java.util.List;
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Testklasse für die TodoRepository-Komponente.
- * Ziel: Sicherstellen, dass Speichern, Lesen und Filtern korrekt funktionieren.
- */
 class TodoRepositoryTest {
 
     private TodoRepository repo;
