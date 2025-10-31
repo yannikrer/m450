@@ -1,8 +1,5 @@
-// src/test/java/com/example/todo/service/TodoServiceTest.java
-package com.example.todo.service;
-
-import com.example.todo.model.TodoItem;
-import com.example.todo.repository.TodoRepository;
+import TodoItem;
+import TodoRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import java.util.List;
