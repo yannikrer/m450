@@ -25,7 +25,6 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      # Gradle wird vom Action-Runner bereitgestellt (keine Wrapper-Dateien nötig)
       - name: Run Gradle tests in subfolder 'Projekt'
         uses: gradle/gradle-build-action@v2
         with:
@@ -33,7 +32,6 @@ jobs:
           build-root-directory: Projekt
           arguments: test
 
-      # HTML-Testreport als Artefakt
       - name: Upload HTML test report
         uses: actions/upload-artifact@v4
         if: always()
@@ -42,7 +40,6 @@ jobs:
           path: Projekt/build/reports/tests/test
           if-no-files-found: warn
 
-      # JUnit-XML als Artefakt
       - name: Upload JUnit XML
         uses: actions/upload-artifact@v4
         if: always()
