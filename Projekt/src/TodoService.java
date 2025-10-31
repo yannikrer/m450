@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+=======
+// src/main/java/com/example/todo/service/TodoService.java
+package com.example.todo.service;
+
+import com.example.todo.model.TodoItem;
+import com.example.todo.repository.TodoRepository;
+>>>>>>> origin/Create-Project
 import java.util.List;
 
 public class TodoService {

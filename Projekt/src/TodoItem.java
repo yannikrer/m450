@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+// src/main/java/com/example/todo/model/TodoItem.java
+package com.example.todo.model;
+
+>>>>>>> origin/Create-Project
 public class TodoItem {
     private final int id;
     private final String description;
