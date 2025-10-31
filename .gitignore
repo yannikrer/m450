@@ -9,3 +9,11 @@
 *.log
 *.cache
 *.config
+
+# IntelliJ
+.idea/
+*.iml
+
+# Gradle build output (nur im Unterordner)
+Projekt/.gradle/
+Projekt/build/

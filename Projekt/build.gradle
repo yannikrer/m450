@@ -1,0 +1,45 @@
+plugins {
+    id "java"
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17) // oder 11 bei Bedarf
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // JUnit 5
+    testImplementation "org.junit.jupiter:junit-jupiter:5.10.2"
+
+    // JUnit 4 (für bestehende Tests) + Vintage-Engine, damit JUnit4-Tests laufen
+    testImplementation "junit:junit:4.13.2"
+    testRuntimeOnly "org.junit.vintage:junit-vintage-engine:5.10.2"
+
+    // Mockito (für mock(), when(), verify() in deinen Tests)
+    testImplementation "org.mockito:mockito-core:5.12.0"
+}
+
+test {
+    useJUnitPlatform() // startet Jupiter + Vintage
+    reports {
+        junitXml.required = true
+        html.required = true
+    }
+}
+
+/* Deine Nicht-Standard-Ordner (src/ und test/) */
+sourceSets {
+    getByName('main') {
+        java.srcDirs = ['src']
+        resources.srcDirs = []
+    }
+    getByName('test') {
+        java.srcDirs = ['test']
+        resources.srcDirs = []
+    }
+}

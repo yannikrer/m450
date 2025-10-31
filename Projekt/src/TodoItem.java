@@ -18,5 +18,6 @@ public class TodoItem {
     public int getId() { return id; }
     public String getDescription() { return description; }
     public boolean isDone() { return done; }
+
     public void markDone() { this.done = true; }
 }

@@ -1,29 +1,47 @@
-name: Java CI
+name: CI (Projekt)
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
+  workflow_dispatch:   # optional: manuell starten
+  pull_request:        # nur PRs prüfen (das willst du im Review)
+    branches: ['*']
+
+    paths:
+      - 'Projekt/**'
+      - '.github/workflows/**'
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
+          distribution: temurin
           java-version: '17'
-          distribution: 'temurin'
 
-      - name: Build and Test
-        run: mvn -B clean test site
-
-      - name: Upload Reports
-        uses: actions/upload-artifact@v4
+      - name: Run Gradle tests in subfolder 'Projekt'
+        uses: gradle/gradle-build-action@v2
         with:
-          name: reports
-          path: |
-            target/site/surefire-report.html
-            target/site/jacoco/index.html
+          gradle-version: '8.7'
+          build-root-directory: Projekt
+          arguments: test
+
+      - name: Upload HTML test report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: junit-html
+          path: Projekt/build/reports/tests/test
+          if-no-files-found: warn
+
+      - name: Upload JUnit XML
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: junit-xml
+          path: Projekt/build/test-results/test/*.xml
+          if-no-files-found: warn
