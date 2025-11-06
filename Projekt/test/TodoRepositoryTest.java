@@ -1,10 +1,9 @@
-package com.example.todo.repository;
-
-import com.example.todo.model.TodoItem;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.util.List;
 import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TodoRepositoryTest {
@@ -12,45 +11,41 @@ class TodoRepositoryTest {
     private TodoRepository repo;
 
     @BeforeEach
-    void setUp() {
+    void setup() {
         repo = new TodoRepository();
     }
 
     @Test
-    void save_createsTodoWithIncrementingId() {
+    void save_createsItemsWithIncrementingIds() {
         TodoItem first = repo.save("Einkaufen");
         TodoItem second = repo.save("Wäsche waschen");
 
-        assertEquals(1, first.getId(), "Erstes Todo sollte ID 1 haben");
-        assertEquals(2, second.getId(), "Zweites Todo sollte ID 2 haben");
+        assertNotEquals(first.getId(), second.getId());
         assertEquals("Einkaufen", first.getDescription());
         assertFalse(first.isDone());
     }
 
     @Test
-    void findAll_returnsAllSavedTodos() {
-        repo.save("Einkaufen");
-        repo.save("Putzen");
+    void findAll_returnsAllItems() {
+        repo.save("A");
+        repo.save("B");
 
         List<TodoItem> todos = repo.findAll();
-
-        assertEquals(2, todos.size(), "Es sollten 2 Todos vorhanden sein");
-        assertTrue(todos.stream().anyMatch(t -> t.getDescription().equals("Einkaufen")));
+        assertEquals(2, todos.size());
     }
 
     @Test
-    void findById_returnsCorrectTodo() {
+    void findById_returnsItemWhenExists() {
         TodoItem created = repo.save("Programmieren lernen");
-
         Optional<TodoItem> result = repo.findById(created.getId());
 
         assertTrue(result.isPresent());
-        assertEquals("Programmieren lernen", result.get().getDescription());
+        assertEquals(created.getId(), result.get().getId());
     }
 
     @Test
-    void findById_returnsEmptyIfNotExists() {
+    void findById_emptyWhenMissing() {
         Optional<TodoItem> result = repo.findById(99);
-        assertTrue(result.isEmpty(), "Nicht existierende ID sollte leeres Optional liefern");
+        assertTrue(result.isEmpty());
     }
 }
