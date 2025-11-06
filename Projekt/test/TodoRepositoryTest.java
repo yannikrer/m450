@@ -48,4 +48,19 @@ class TodoRepositoryTest {
         Optional<TodoItem> result = repo.findById(99);
         assertTrue(result.isEmpty());
     }
+
+    @Test
+    void findAll_returnsEmptyListInitially() {
+        List<TodoItem> result = repo.findAll();
+        assertTrue(result.isEmpty(), "Am Anfang sollte Liste leer sein");
+    }
+
+    @Test
+    void save_addsTodoToInternalStore() {
+        TodoItem item = repo.save("Test");
+        Optional<TodoItem> stored = repo.findById(item.getId());
+
+        assertTrue(stored.isPresent(), "Todo sollte im internen Speicher vorhanden sein");
+        assertEquals("Test", stored.get().getDescription());
+    }
 }
