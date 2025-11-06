@@ -5,7 +5,7 @@ plugins {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17) // oder 11 bei Bedarf
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
@@ -14,18 +14,14 @@ repositories {
 }
 
 dependencies {
-    // JUnit 5
     testImplementation "org.junit.jupiter:junit-jupiter:5.10.2"
 
-    // JUnit 4 (für bestehende Tests) + Vintage-Engine, damit JUnit4-Tests laufen
     testImplementation "junit:junit:4.13.2"
     testRuntimeOnly "org.junit.vintage:junit-vintage-engine:5.10.2"
 
-    // Mockito (für mock(), when(), verify() in deinen Tests)
     testImplementation "org.mockito:mockito-core:5.12.0"
 }
 
-/* Deine Nicht-Standard-Ordner (src/ und test/) */
 sourceSets {
     getByName('main') {
         java.srcDirs = ['src']
@@ -38,16 +34,14 @@ sourceSets {
 }
 
 test {
-    useJUnitPlatform() // startet Jupiter + Vintage
+    useJUnitPlatform()
     reports {
         junitXml.required = true
         html.required = true
     }
-    // ✅ nach den Tests automatisch den Coverage-Report bauen
     finalizedBy jacocoTestReport
 }
 
-/* ✅ JaCoCo-Konfiguration */
 jacoco {
     toolVersion = '0.8.10'
 }
@@ -55,27 +49,9 @@ jacoco {
 jacocoTestReport {
     dependsOn test
     reports {
-        xml.required = true         // für SonarCloud/Parsing im CI
+        xml.required = true
         csv.required = false
-        html.required = true        // hübscher HTML-Report
+        html.required = true
         html.outputLocation = layout.buildDirectory.dir("reports/jacoco/test/html")
     }
 }
-
-/* (Optional) Mindestabdeckung erzwingen – einkommentieren, wenn du willst, dass der Build bei <20% fehlschlägt
-jacocoTestCoverageVerification {
-    violationRules {
-        rule {
-            element = 'CLASS'
-            limits {
-                limit {
-                    counter = 'LINE'
-                    value   = 'COVEREDRATIO'
-                    minimum = 0.20
-                }
-            }
-        }
-    }
-}
-check.dependsOn jacocoTestCoverageVerification
-*/
